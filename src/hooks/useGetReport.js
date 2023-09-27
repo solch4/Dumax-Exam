@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 
+import results from "../data/reports/results.json";
+
 const baseURL = "https://us-central1-dumax-eld.cloudfunctions.net/userApp";
 
 export const useGetReport = () => {
@@ -15,7 +17,12 @@ export const useGetReport = () => {
       const { data } = await axios.get(
         `${baseURL}/api/test/geocercas?geocerca=${geofences}&unidades=${units}&fechas=${dates}`
       );
-      setData(data);
+      const sortedData = data.sort((a, b) => {
+        let dateA = new Date(a.timeStamps.entrada);
+        let dateB = new Date(b.timeStamps.entrada);
+        return dateB - dateA;
+      });
+      setData(sortedData);
     } catch (error) {
       console.error(error);
       setError(error);
