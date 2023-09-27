@@ -50,8 +50,8 @@ const Samplepage = () => {
 
               <Col md="3">
                 <FormGroup>
-                  <Label htmlFor="dates">Rangos de fechas</Label>
-                  <Input id="dates" name="dates" type="select">
+                  <Label htmlFor="dates">Rangos de fechas *</Label>
+                  <Input id="dates" name="dates" type="select" required>
                     {dates.map((date) => (
                       <option key={date}>{date}</option>
                     ))}

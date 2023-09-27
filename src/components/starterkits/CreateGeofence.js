@@ -38,17 +38,33 @@ const CreateGeofence = () => {
 
             <FormGroup>
               <Label htmlFor="unitName">Nombre de la unidad</Label>
-              <Input id="unitName" name="unitName" type="text" />
+              <Input
+                id="unitName"
+                name="unitName"
+                type="text"
+                minLength={3}
+                maxLength={15}
+                title="El nombre debe tener entre 3 y 15 caracteres"
+                required
+              />
             </FormGroup>
 
             <FormGroup>
               <Label htmlFor="license">Licencia del chofer</Label>
-              <Input id="license" name="license" type="text" />
+              <Input
+                id="license"
+                name="license"
+                type="text"
+                maxLength={10}
+                pattern="^\d{10}$"
+                title="La licencia debe tener 10 caracteres numéricos"
+                required
+              />
             </FormGroup>
 
             <FormGroup>
               <Label htmlFor="email">Email chofer</Label>
-              <Input id="email" name="email" type="email" />
+              <Input id="email" name="email" type="email" required />
             </FormGroup>
 
             <Button disabled={isLoading} type="submit">
