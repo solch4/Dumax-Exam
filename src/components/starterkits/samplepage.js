@@ -25,11 +25,11 @@ const nOfEntries = [10, 15, 20];
 const Samplepage = () => {
   const { data: reports, isLoading, error, fetchData } = useGetReport();
 
-  const generateReport = (e) => {
+  const generateReport = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const fields = Object.fromEntries(formData);
-    fetchData(fields);
+    await fetchData(fields);
   };
 
   return (
